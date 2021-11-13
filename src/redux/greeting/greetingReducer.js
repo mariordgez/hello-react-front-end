@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const GET_GREETING_FULFILLED = 'hello-rails-react/GET_GREETING/fulfilled';
 
 const fetchAPI = async () => {
-  const URL = 'http://127.0.0.1:3000/v1/greetings';
+  const URL = 'http://127.0.0.1:4000/v1/greetings';
   const request = await fetch(URL, {
     method: 'GET',
     headers: {
@@ -29,7 +29,7 @@ export const fetchGreeting = createAsyncThunk(
 
 const greetingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_MESSAGE_FULFILLED:
+    case GET_GREETING_FULFILLED:
       return {
         status: 'ready',
         greeting: action.payload,

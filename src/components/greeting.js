@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchGreeting } from '../redux/greeting/greetingReducer';
 
 const Greeting = () => {
-  const { status, message } = useSelector((state) => state.greeting);
+  const { status, greeting } = useSelector((state) => state.greeting);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Greeting = () => {
   }, [status]);
 
   const loadGreeting = (load = '') => (
-    <div className={`container ${load}`}>
+    <div className={`${load}`}>
       {load !== '' && (
         <div>
           <h1>Welcome to React-Rails!</h1>
@@ -23,7 +23,9 @@ const Greeting = () => {
     </div>
   );
 
-  return <div>{status !== 'ready' ? loadGreeting() : loadGreeting('load')}</div>;
+  return (
+    <div>{status !== 'ready' ? loadGreeting() : loadGreeting('load')}</div>
+  );
 };
 
 export default Greeting;
